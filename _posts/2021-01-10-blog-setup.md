@@ -19,7 +19,7 @@ There are some good [themes on github](https://github.com/search?q=jekyll+themes
 
 I ended up choosing [contrast](https://github.com/niklasbuschmann/contrast) since it's the closest to what I want and I don't know how to edit the themes yet. 
 
-The initial steps are to fork the repository, rename it to username.github.io, and edit the names / links / etc in `_config.yml`. Be careful to make changes incrementally; a typo may break things. You can see the build-and-deply progress under the Actions tab of the repository. The [documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) is pretty clear that you should be testing locally. 
+The initial steps are to fork the repository, rename it to username.github.io, and edit the names / links / etc in `_config.yml`. Be careful to make changes incrementally; a typo may break things. You can see the build-and-deply progress under the Actions tab of the repository. Note that sometimes a successful build still has a delay before showing changes, some changes didn't reload for another 10 minutes. The [documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) is pretty clear that you should be testing locally. 
 
 At this point I installed GitHub Desktop, so I can edit the files locally in Visual Studio Code, and roll back if things die. 
 

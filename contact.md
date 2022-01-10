@@ -1,6 +1,5 @@
 ---
 layout: default
-is_contact: true
 ---
 
 <!--- * Email: [email@site.com](mailto:email@site.com) --->

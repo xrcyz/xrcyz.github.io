@@ -43,6 +43,7 @@ Looks like most of the variables are documented [here](https://jekyllrb.com/docs
 
 
 More links:
+- https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll
 
 

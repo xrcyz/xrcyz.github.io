@@ -1,13 +1,11 @@
 ---
 title: "Contact"
-icon: envelope
 layout: page
-permalink: "/contact/"
 ---
 
 <!--- * Email: [email@site.com](mailto:email@site.com) --->
 
-## Social
+## Socials
 
 1. [Twitter](https://twitter.com/planet403)
 2. [GitHub](https://github.com/xrcyz)

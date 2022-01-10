@@ -1,6 +1,7 @@
 ---
 title: "Contact"
-layout: default
+icon: envelope
+layout: page
 permalink: "/contact/"
 ---
 

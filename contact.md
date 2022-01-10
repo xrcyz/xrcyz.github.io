@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: "/contact/"
 ---
 
 <!--- * Email: [email@site.com](mailto:email@site.com) --->

@@ -8,14 +8,14 @@ I decided to rip the bandaid off and make a personal website. I need a place to 
 I started by following this [tutorial](https://www.youtube.com/watch?v=qZsgPgGdOzQ) by Kathryn Schuler. 
 
 There are some good [themes on github](https://github.com/search?q=jekyll+themes):
-- https://github.com/niklasbuschmann/contrast
-- https://github.com/LeNPaul/academic
-- https://github.com/ankitsultana/researcher
-- https://github.com/heiswayi/textlog
-- https://github.com/nielsenramon/chalk
-- https://github.com/rohanchandra/type-theme
-- https://github.com/sighingnow/jekyll-gitbook
-- https://github.com/huangyz0918/moving
+- [contrast](https://github.com/niklasbuschmann/contrast)
+- [academic](https://github.com/LeNPaul/academic)
+- [researcher](https://github.com/ankitsultana/researcher)
+- [textlog](https://github.com/heiswayi/textlog)
+- [chalk](https://github.com/nielsenramon/chalk)
+- [type](https://github.com/rohanchandra/type-theme)
+- [jekyll-gitbook](https://github.com/sighingnow/jekyll-gitbook)
+- [moving](https://github.com/huangyz0918/moving)
 
 I ended up choosing [contrast](https://github.com/niklasbuschmann/contrast) since it's the closest to what I want and I don't know how to edit the themes yet. 
 
@@ -24,15 +24,13 @@ The initial steps are to fork the repository, rename it to username.github.io, a
 At this point I installed GitHub Desktop, so I can edit the files locally in Visual Studio Code, and roll back if things die. 
 
 You can find examples of how people edit the content and theme of their websites by browsing the forks of the themes, for example:
-- https://github.com/TimothyWeng/TimothyWeng.github.io
-- https://heupchurch.github.io/
-- https://based-tachikoma.github.io/
-- https://github.com/caitlincoffey/caitlincoffey.github.io
-- https://github.com/andybridger/andybridger.github.io
-- https://github.com/sgul-bioinformatics/sgul-bioinformatics.github.io
-- https://github.com/daoxinli/pennchildlanglab.github.io
-
-Each page has some header material defining the title, layout, permalink if necessary, and so on. 
+- [https://github.com/daoxinli/pennchildlanglab.github.io](https://github.com/daoxinli/pennchildlanglab.github.io)
+- [https://github.com/sgul-bioinformatics/sgul-bioinformatics.github.io](https://github.com/sgul-bioinformatics/sgul-bioinformatics.github.io)
+- [https://github.com/TimothyWeng/TimothyWeng.github.io](https://github.com/TimothyWeng/TimothyWeng.github.io)
+- [https://github.com/heupchurch/heupchurch.github.io/](https://github.com/heupchurch/heupchurch.github.io/)
+- [https://github.com/based-tachikoma/based-tachikoma.github.io/](https://github.com/based-tachikoma/based-tachikoma.github.io/)
+- [https://github.com/caitlincoffey/caitlincoffey.github.io](https://github.com/caitlincoffey/caitlincoffey.github.io)
+- [https://github.com/andybridger/andybridger.github.io](https://github.com/andybridger/andybridger.github.io)
 
 I have yet to get a handle on the [language](https://shopify.github.io/liquid/) that is being used to auto-generate some stuff. 
 
@@ -40,7 +38,35 @@ I have yet to get a handle on the [language](https://shopify.github.io/liquid/) 
 
 Looks like most of the variables are documented [here](https://jekyllrb.com/docs/variables/). Also, the google results seem reasonably high quality for "jekyll how to do X with liquid".
 
+Take this [example](https://raw.githubusercontent.com/daoxinli/pennchildlanglab.github.io/master/people.md) that lays out a grid on the page: 
 
+{% raw %}
+```html
+<ul class="list-unstyled list-inline text-center">
+
+{% for author in site.authors %}
+<li>
+        <figure class="figure">
+                <img src='../assets/images/{{ author.short_name }}.png' alt='{{ author.short_name }}' /> 
+                <figcaption><strong><a href="{{ author.url }}">{{ author.name }}</a></strong>
+                <br> {{ author.position }} </figcaption>
+        </figure> 
+</li>
+{% endfor %}
+</ul>
+```
+{% endraw %}
+
+The `ul` starts a HTML unordered list, `li` is an item in the list. The list `site.authors` is defined in `_config.yml` under the `collections` header:
+
+```md
+# collections
+collections:
+  authors:
+    output: true
+```
+
+Then there is a folder called `_authors` containing the individual `author1.md` files, with the `author.xyz` variables defined in the header block. 
 
 More links:
 - https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows

@@ -1,5 +1,5 @@
 ---
-title: "Blog Setup"
+title: "Hello World"
 layout: post
 ---
 
@@ -40,33 +40,7 @@ I have yet to get a handle on the [language](https://shopify.github.io/liquid/) 
 
 Looks like most of the variables are documented [here](https://jekyllrb.com/docs/variables/). Also, the google results seem reasonably high quality for "jekyll how to do X with liquid".
 
-Take this [example](https://raw.githubusercontent.com/daoxinli/pennchildlanglab.github.io/master/people.md) that lays out a grid on the page: 
 
-{% raw %}
-```html
-<ul class="list-unstyled list-inline text-center">
-
-{% for author in site.authors %}
-<li>
-        <figure class="figure">
-                <img src='../assets/images/{{ author.short_name }}.png' alt='{{ author.short_name }}' /> 
-                <figcaption><strong><a href="{{ author.url }}">{{ author.name }}</a></strong>
-                <br> {{ author.position }} </figcaption>
-        </figure> 
-</li>
-{% endfor %}
-</ul>
-```
-{% endraw %}
-
-The `ul` starts a HTML unordered list, `li` is an item in the list. There must be a list `site.authors` defined somewhere... there is a folder called `_authors` that contains each author file. I'm guessing that this snippet in `_config.yml` defines it as enumerable?
-
-```md
-# collections
-collections:
-  authors:
-    output: true
-```
 
 More links:
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll

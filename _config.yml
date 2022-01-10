@@ -18,13 +18,9 @@ minimal: false             # use a dark header
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
   - {file: "blog.md"}
-  - {title: Github, icon: github, url: "https://github.com/andybridger"}
-  #- {file: "sketches.md"}
- # - {file: "contact.md"}
- # - Github: "https://github.com/xrcyz"
+  - {file: "contact.md"}
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
-#  - {title: Mail, icon: envelope, url: "mailto:niklasbuschmann@users.noreply.github.com"}
   - {title: Github, icon: github, url: "https://github.com/xrcyz"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/planet403"}
 

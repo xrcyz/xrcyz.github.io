@@ -18,7 +18,11 @@ minimal: false             # use a dark header
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
   - {file : "blog.md" }
+<<<<<<< HEAD
   - {file: "contact.md" }
+=======
+  - {file: "README.md"} 
+>>>>>>> parent of e10754f (change about page)
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Github, icon: github, url: "https://github.com/xrcyz"}

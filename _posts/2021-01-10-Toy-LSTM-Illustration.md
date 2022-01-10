@@ -66,7 +66,7 @@ memory[5] = memory[5] * eraser[5] + writer[5] * filter[5];
 
 > If you aren't familiar with the logistic and tanh formuals above, you can plug them into [desmos](https://www.desmos.com/calculator) to see what they look like. Basically the logistic function lets you do a boolean test for whether a vector is above/below a plane in n-space, and the tanh function performs the same test but in the range -1 to 1, so you can increment or decrement the memory based on the result. 
 
-Note that the test for each node requires gaming the order of the edges preceding it. It is an extremely flaky way of coding, but that seems to align with the general perception that neural networks are doing blackbox code golf. It would be nice to go up a level on the ladder of abstraction, to a graph of all possible programs, connected by edges which are edits to the program; I think this would naturally converge on a basin of non-flaky code... but anyway. 
+Note that the test for each node requires gaming the order of the edges preceding it. It is an extremely flaky way of coding, but that seems to align with my general impression that neural networks are doing blackbox code golf that is never meant to be read. It would be nice to go up a level on the ladder of abstraction, to a graph of all possible programs, connected by edges which are edits to the program; I think this would naturally converge on a basin of non-flaky code... but anyway. 
 
 Here is the [full implementation](https://openprocessing.org/sketch/1412417):
 
@@ -188,8 +188,11 @@ return str;
 ```
 # Conclusions
 
-WIP.
+This code is definitely not perfect. It fails on `BTSSXXTTTTTTTTTTTTTTTTTTTTTTTTTTTTSXVVE` because `filter[1]` doesn't return exactly zero when blocking false positives. 
 
+I also make a starting assumption that all strings start with B, whereas real-world historical data will start in some unknown hidden state. The LSTM may need to accumulate breadcrumbs on multiple nodes until it gets a clear signal about which part of the graph it is in. This sounds equivalent to adding new edges to the graph, like 'move to node 2 if you get input X from node 5'.
+
+Technically I should train an LSTM on the embedded Reber Grammar next (apparently its the Hello World of LSTMs), we'll see if I get time. 
 
 # References
 - [https://colah.github.io/posts/2015-08-Understanding-LSTMs/](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)

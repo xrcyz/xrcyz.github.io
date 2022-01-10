@@ -28,7 +28,7 @@ The defining feature of an LSTM is the 'memory'. Like a detective inspecting a c
 In order to gain an understanding of the inner workings of an LSTM, I hand-weighted a toy model to predict the next letter in a string of characters. The characters are generated using Reber Grammar. 
 
 <p align="center">
-    <img src= "assets/images/reber-grammar.png" width="850" height="450" align="middle"/>
+    <img src= "../assets/images/reber-grammar.png" width="850" height="450" align="middle"/>
 </p>
 
 Reber Grammar is a rule set for generating strings of text. Starting with the letter B, we move through the graph, emitting letters as we cross each edge, yielding strings like BTXSE, BPVVE, or BTSSXXTTVPXVVE. 

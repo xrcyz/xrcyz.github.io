@@ -68,6 +68,8 @@ collections:
 
 Then there is a folder called `_authors` containing the individual `author1.md` files, with the `author.xyz` variables defined in the header block. 
 
+The [academic](https://github.com/LeNPaul/academic) theme does the same thing with its [portfolio](https://github.com/academicpages/academicpages.github.io/blob/25c30de2b4ce3e3f23559384699bb4b9865d6473/_pages/portfolio.html)
+
 More links:
 - https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll

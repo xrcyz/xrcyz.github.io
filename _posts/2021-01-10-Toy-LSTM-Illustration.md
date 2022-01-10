@@ -11,7 +11,7 @@ LSTM stands for Long Short-Term Memory network, a type of recurrent neural netwo
 LSTMs are used for automated discovery of relationships in time series data. Back in 2015, LSTMs were the latest and greatest thing for speech recognition and language translation. 
 
 # How does it work?
-I can't speak for how all LSTMs work, but I can speak for how this one LSTM does: 
+I can't speak for how all LSTMs work, but I can speak for how this one does: 
 
 | Component | Purpose |
 |---        |---      |

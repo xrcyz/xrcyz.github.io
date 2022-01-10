@@ -21,8 +21,9 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "contact.md" }
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
-  - {title: Github, icon: github, url: "https://github.com/xrcyz"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/planet403"}
+  - {title: OpenProcessing, icon: drafting-compass, url: "https://openprocessing.org/user/43936"}
+  - {title: Github, icon: github, url: "https://github.com/xrcyz"}
 
 comments:
 #  disqus_shortname: ""    # see https://disqus.com/

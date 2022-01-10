@@ -73,6 +73,7 @@ The [academic](https://github.com/LeNPaul/academic) theme does the same thing wi
 More links:
 - https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll
+- https://carpentries-incubator.github.io/jekyll-pages-novice/arrays/index.html
 
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].

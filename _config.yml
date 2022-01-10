@@ -1,4 +1,4 @@
-title: "xrcyz's blog"
+title: "xrcyz"
 author: "Blog Author"
 description: "Made with <b style=\"color: #f45;\">&lt;3</b>"
 permalink: /:title/
@@ -18,7 +18,7 @@ minimal: false             # use a dark header
 navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html"}
   - {file: "blog.md" }
-  - {file: "contact.md" }
+  - {file: "projects.md" }
 
 external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
   - {title: Twitter, icon: twitter, url: "https://twitter.com/planet403"}

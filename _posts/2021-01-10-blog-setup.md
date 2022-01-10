@@ -68,12 +68,14 @@ collections:
 
 Then there is a folder called `_authors` containing the individual `author1.md` files, with the `author.xyz` variables defined in the header block. 
 
-The [academic](https://github.com/LeNPaul/academic) theme does the same thing with its [portfolio](https://github.com/academicpages/academicpages.github.io/blob/25c30de2b4ce3e3f23559384699bb4b9865d6473/_pages/portfolio.html)
+The [academic](https://github.com/LeNPaul/academic) theme does the same thing with its [portfolio](https://github.com/academicpages/academicpages.github.io/blob/25c30de2b4ce3e3f23559384699bb4b9865d6473/_pages/portfolio.html).
+
+And now that I'm looking for it, the `layout` types in the header blocks get mapped to html files in the `_layouts` folder. 
 
 More links:
+- https://carpentries-incubator.github.io/jekyll-pages-novice/arrays/index.html
 - https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll
-- https://carpentries-incubator.github.io/jekyll-pages-novice/arrays/index.html
 
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].

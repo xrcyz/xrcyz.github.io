@@ -46,14 +46,16 @@ let input   = [1,0,0,0,0,0,0]; //current token [B,T,S,X,P,V,E]
 The indexes of the `memory`, `eraser`, `writer`, `filter`, and `reader` correspond to the index of the nodes in the Reber Grammar graph. 
 
 ```js
-let memory  = [1,0,0,0,0,0]; //current node in the graph, [0,1,2,3,4,5]
+let memory  = [1,0,0,0,0,0]; //current node in the graph: [0,1,2,3,4,5]
 ```
+
 For the sake of clarity, I show the `erase`, `write`, `filter` operations consecutively on each node. 
 
 ```js
-//test for node 5: triggers on BP, XX, PX but not BX (node 2)
+//test for node 5: triggers on BP and X but not BX
 //basically we tally up dependencies leading to this node
 //using the filter to weed out false positives as required
+//and reset the breadcrumbs if we cross an S or V, indicating we've left the node
 
 eraser[5] = 1 / (1 + exp(-10 * (0.5 - S - V)));                 //reset on S,V
 writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);              //breadcrumbs to node 5
@@ -61,6 +63,10 @@ filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));            //do not increme
 
 memory[5] = memory[5] * eraser[5] + writer[5] * filter[5]; 
 ```
+
+> If you aren't familiar with the logistic and tanh formuals above, you can plug them into [desmos](https://www.desmos.com/calculator) to see what they look like. Basically the logistic function lets you do a boolean test for whether a vector is above/below a plane in n-space, and the tanh function performs the same test but in the range -1 to 1, so you can increment or decrement the memory based on the result. 
+
+Note that the test for each node requires gaming the order of the edges preceding it. It is an extremely flaky way of coding, but that seems to align with the general perception that neural networks are doing blackbox code golf. It would be nice to go up a level on the ladder of abstraction, to a graph of all possible programs, connected by edges which are edits to the program; I think this would naturally converge on a basin of non-flaky code... but anyway. 
 
 Here is the [full implementation](https://openprocessing.org/sketch/1412417):
 
@@ -109,7 +115,7 @@ while(str.length < len)
     writer[2] = Math.tanh(0.55 * (T + X + P));                      //breadcrumbs to node 2
     filter[2] = 1 / (1 + exp(-30 * (0.65 - memory[5])));            //do not increment from node 5
 
-    //BP, XX, PX but not BX
+    //BP and X but not BX
     eraser[5] = 1 / (1 + exp(-10 * (0.5 - S - V)));                 //reset on S,V
     writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);              //breadcrumbs to node 5
     filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));            //do not increment from node 1
@@ -180,9 +186,11 @@ while(str.length < len)
 return str;
 
 ```
+# Conclusions
 
+WIP.
 
 
 # References
-- https://colah.github.io/posts/2015-08-Understanding-LSTMs/
-- http://www.bioinf.jku.at/publications/older/2604.pdf
+- [https://colah.github.io/posts/2015-08-Understanding-LSTMs/](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+- [http://www.bioinf.jku.at/publications/older/2604.pdf](http://www.bioinf.jku.at/publications/older/2604.pdf)

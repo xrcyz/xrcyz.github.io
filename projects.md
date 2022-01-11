@@ -3,4 +3,5 @@ title: "Projects"
 layout: page
 ---
 
-Watch this space...
+Projects:
+- [Toy LSTM in p5js](https://xrcyz.github.io/Toy-LSTM/)

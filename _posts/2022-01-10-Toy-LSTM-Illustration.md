@@ -74,9 +74,9 @@ Note that I am taking moderate care to ensure that the firing threshold for each
 With that in mind, let us now consider `node[2]`, which may be reached by `T(SSS)X` or `X(TTT)VP`. In the `writer` I use a factor of `0.55` to increment the memory by half if a precedent edge `T`, `X`, or `P` is crossed. This covers the cases for `TX` (via node 1) and `XP` (via node 5). Finally, the filter is set to ignore `T` when it loops on `node[5]`. 
 
 ```js
-    eraser[2] = 1 / (1 + exp(-30 * (0.65 - memory[2])));            //reset on exit
-    writer[2] = Math.tanh(0.55 * (T + X + P));                      //breadcrumbs to node 2
-    filter[2] = 1 / (1 + exp(-30 * (0.65 - memory[5])));            //do not increment from node 5
+eraser[2] = 1 / (1 + exp(-30 * (0.65 - memory[2])));            //reset on exit
+writer[2] = Math.tanh(0.55 * (T + X + P));                      //breadcrumbs to node 2
+filter[2] = 1 / (1 + exp(-30 * (0.65 - memory[5])));            //do not increment from node 5
 ```
 
 With `node[3]`, I apply weights to `S` and `V` to catch the precedent sequences `S` and `VV`. The `eraser` resets on `P` to avoid sequence `VPS`, and the filter blocks the looping `S` on `node[1]` to avoid sequence `SSS`.  
@@ -102,5 +102,19 @@ filter[4] = 1 / (1 + exp(-10 * (0.6 - memory[4])));             //filter V on ex
 eraser[5] = 1 / (1 + exp(-10 * (0.5 - S - V)));                 //reset on S,V
 writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);              //breadcrumbs to node 5
 filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));            //do not increment from node 1
+```
+
+## Readout
+
+The `reader` layer is a one-hot vector representing the probability of yielding a specified character. Each element of he `reader` performs a test of the `memory` vector, to determine if the current state could yield a given character.
+
+```js
+reader[0] = 0; //we never yield B
+reader[1] = Math.tanh(5 * (memory[0] + memory[5] - 0.7)); //T may yield from 0 or 5
+reader[2] = Math.tanh(5 * (memory[1] + memory[2] - 0.7)); //S may yield from 1 or 2
+reader[3] = Math.tanh(5 * (memory[1] + memory[2] - 0.7)); //X may yield from 1 or 2
+reader[4] = Math.tanh(5 * (memory[0] + memory[4] - 0.7)); //P may yield from 0 or 4 
+reader[5] = Math.tanh(5 * (memory[4] + memory[5] - 0.7)); //V may yield from 4 or 5
+reader[6] = Math.tanh(5 * (memory[3]             - 0.7)); //E may yield from 3
 ```
 

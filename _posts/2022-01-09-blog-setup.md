@@ -5,6 +5,8 @@ layout: post
 
 I decided to rip the bandaid off and make a personal website. I need a place to host my portfolio, and I also want to know how to build websites for future projects. 
 
+> TLDR follow [this tutorial]([this](https://www.taniarascia.com/make-a-static-website-with-jekyll/))
+
 I started by following this [tutorial](https://www.youtube.com/watch?v=qZsgPgGdOzQ) by Kathryn Schuler. 
 
 There are some good [themes on github](https://github.com/search?q=jekyll+themes):
@@ -71,6 +73,9 @@ Then there is a folder called `_authors` containing the individual `author1.md` 
 The [academic](https://github.com/LeNPaul/academic) theme does the same thing with its [portfolio](https://github.com/academicpages/academicpages.github.io/blob/25c30de2b4ce3e3f23559384699bb4b9865d6473/_pages/portfolio.html).
 
 And now that I'm looking for it, the `layout` types in the header blocks get mapped to html files in the `_layouts` folder. 
+
+A bit of googling takes me to [this](https://www.taniarascia.com/make-a-static-website-with-jekyll/) awesome tutorial by Tania Rascia, which fills in most of the gaps.
+
 
 More links:
 - https://carpentries-incubator.github.io/jekyll-pages-novice/arrays/index.html

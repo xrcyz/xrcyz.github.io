@@ -39,9 +39,9 @@ Reber Grammar is a rule set for generating strings of text. Starting with the le
 
 Each time step, the LSTM receives a one-hot vector input representing the last emitted token. 
 
-```js
+{% highlight javascript %}
 let input   = [1,0,0,0,0,0,0]; //current token [B,T,S,X,P,V,E]
-```
+{% endhighlight %}
 
 The indexes of the `memory`, `eraser`, `writer`, `filter`, and `reader` correspond to the index of the nodes in the Reber Grammar graph. 
 
@@ -49,7 +49,7 @@ The indexes of the `memory`, `eraser`, `writer`, `filter`, and `reader` correspo
 let memory  = [1,0,0,0,0,0]; //current node in the graph: [0,1,2,3,4,5]
 ```
 
-For the sake of clarity, I show the `erase`, `write`, `filter` operations consecutively on each node. 
+For the sake of clarity, I show the `erase`, `write`, `filter` operations consecutively for each node. 
 
 ```js
 //test for node 5: triggers on BP and X but not BX

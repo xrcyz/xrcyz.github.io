@@ -27,7 +27,7 @@ The `input` array is a one-hot vector representing the last character of the str
 let input   = [1,0,0,0,0,0,0]; //current token [B,T,S,X,P,V,E]
 ```
 
-# Hidden State
+## Hidden State
 
 > Throughout this section I will use to `node[i]` to refer to the index of the current node in the Reber Grammar graph. 
 

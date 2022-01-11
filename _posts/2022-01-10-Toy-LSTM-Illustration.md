@@ -49,7 +49,7 @@ The indexes of the `memory`, `eraser`, `writer`, `filter`, and `reader` correspo
 let memory  = [1,0,0,0,0,0]; //current node in the graph: [0,1,2,3,4,5]
 ```
 
-For the sake of clarity, I show the `erase`, `write`, `filter` operations consecutively on each node. 
+For the sake of clarity, I show the `erase`, `write`, `filter` operations consecutively for each node. 
 
 ```js
 //test for node 5: triggers on BP and X but not BX

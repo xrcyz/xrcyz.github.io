@@ -6,7 +6,9 @@ layout: post
 I made a toy LSTM to help me understand the concepts underlying [Long-Short Term Memory](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) recurrent neural networks. It solves a simple task - given a string of characters, predict the next character according to the Reber Grammar. 
 
 <p align="center">
-    <img src= "../assets/images/reber-grammar.png" width="850" height="450" align="middle"/>
+    <a href="https://xrcyz.github.io/Toy-LSTM-Illustration/">
+        <img src= "../assets/images/reber-grammar.png" alt="Reber Grammar diagram" width="850" height="450" align="middle"/>
+    </a>
 </p>
 
 The interesting part of this project is that I derived the weights by hand, without using back-propagation, to see if I could gain an insight into how an LSTM makes its predictions. 
@@ -14,7 +16,7 @@ The interesting part of this project is that I derived the weights by hand, with
 If you want to follow along in the animation, you can do it [here](https://xrcyz.github.io/Toy-LSTM/). 
 
 <p align="center">
-    <img src= "../assets/images/toy-lstm-preview.png" width="850" height="779" align="middle"/>
+    <img src= "../assets/images/toy-lstm-preview.png" alt="LSTM diagram" width="850" height="779" align="middle"/>
 </p>
 
 The internal logic of this LSTM is remarkably simple. You could implement it in Microsoft Excel. 

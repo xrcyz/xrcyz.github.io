@@ -151,7 +151,7 @@ Consider the following:
 - A one-hot vector is equivalent to a vertex on a hypercube. 
 - A loop of state changes is equivalent to walking the vertices of a hyperpolygon in memory space.
 
-Critically, we don't want the memory drifting in weird orbits if we go into a long loop (cycling `PXV` for example). We want to snap to the vertices of the hyperpolygon so that the `reader` correctly classifies the input. With this in mind, I can see why it may make sense to preprocess the inputs into one-hot or binary vectors, to limit the range of outputs on the `eraser`, `writer`, and `filter`. There might even be a case for doubling the memory size and rounding the memory elements after every state change (one slot per breadcrumb). 
+Critically, we don't want the memory drifting in weird orbits if we go into a long loop (cycling `PXV` for example). We want to snap to the vertices of the hyperpolygon so that the `reader` correctly classifies the hidden state. With this in mind, I can see why it may make sense to preprocess the inputs into one-hot or binary vectors, to limit the range of outputs on the `eraser`, `writer`, and `filter`. There might even be a case for doubling the memory size and rounding the memory elements after every state change (one slot per breadcrumb). 
 
 ## Future Work
 

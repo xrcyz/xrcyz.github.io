@@ -64,9 +64,9 @@ From there we might move to `node[1]`. This node is interesting for two reasons:
 This is where the `eraser` and `filter` tests come into play:
 
 ```js
-eraser[1] = 1 / (1 + exp(-10 * (0.5 - X)));                     //reset on X (exit node 1)
-writer[1] = Math.tanh(5 * T);                                   //if we get a T, then ring the bell for node[1]
-filter[1] = 1 / (1 + exp(-30 * (0.75 - memory[5])));            //but only if we are not on node 5
+eraser[1] = 1 / (1 + exp(-10 * (0.5 - X)));           //reset on X (exit node 1)
+writer[1] = Math.tanh(5 * T);                         //if we get a T, then ring the bell for node[1]
+filter[1] = 1 / (1 + exp(-30 * (0.75 - memory[5])));  //but only if we are not on node 5
 ```
 
 Note that I am taking moderate care to ensure that the firing threshold for each node in memory is approximately `1.0`. This becomes important in the `reader` layer, when we need to test multiple nodes to predict a single character. A node may accumulate evidence when precedent edges are crossed, but is not considered 'active' until it crosses the firing threshold. 
@@ -74,34 +74,33 @@ Note that I am taking moderate care to ensure that the firing threshold for each
 With that in mind, let us now consider `node[2]`, which may be reached by `T(SSS)X` or `X(TTT)VP`. In the `writer` I use a factor of `0.55` to increment the memory by half if a precedent edge `T`, `X`, or `P` is crossed. This covers the cases for `TX` (via node 1) and `XP` (via node 5). Finally, the filter is set to ignore `T` when it loops on `node[5]`. 
 
 ```js
-eraser[2] = 1 / (1 + exp(-30 * (0.65 - memory[2])));            //reset on exit
-writer[2] = Math.tanh(0.55 * (T + X + P));                      //breadcrumbs to node 2
-filter[2] = 1 / (1 + exp(-30 * (0.65 - memory[5])));            //do not increment from node 5
+eraser[2] = 1 / (1 + exp(-30 * (0.65 - memory[2])));   //reset on exit
+writer[2] = Math.tanh(0.55 * (T + X + P));             //breadcrumbs to node 2
+filter[2] = 1 / (1 + exp(-30 * (0.65 - memory[5])));   //do not increment from node 5
 ```
 
 With `node[3]`, I apply weights to `S` and `V` to catch the precedent sequences `S` and `VV`. The `eraser` resets on `P` to avoid sequence `VPS`, and the filter blocks the looping `S` on `node[1]` to avoid sequence `SSS`.  
 
 ```js
-eraser[3] = 1 / (1 + exp(-10 * (0.5 - P)));                     //reset on P
-writer[3] = Math.tanh(3.0 * S + 0.55 * V);                      //breadcrumbs to node 3
-filter[3] = 1 / (1 + exp(-10 * (0.7 - memory[1])));             //do not increment from node 1
+eraser[3] = 1 / (1 + exp(-10 * (0.5 - P)));            //reset on P
+writer[3] = Math.tanh(3.0 * S + 0.55 * V);             //breadcrumbs to node 3
+filter[3] = 1 / (1 + exp(-10 * (0.7 - memory[1])));    //do not increment from node 1
 ```
 
 `node[4]` presents a refreshingly simple case, where we can increment on `V` and immediately erase/filter on exit.
 
 ```js
-eraser[4] = 1 / (1 + exp(-10 * (0.6 - memory[4])));             //reset on exit
-writer[4] = Math.tanh(5 * V);                                   //breadcrumbs to node 4
-filter[4] = 1 / (1 + exp(-10 * (0.6 - memory[4])));             //filter V on exit
+eraser[4] = 1 / (1 + exp(-10 * (0.6 - memory[4])));     //reset on exit
+writer[4] = Math.tanh(5 * V);                           //breadcrumbs to node 4
+filter[4] = 1 / (1 + exp(-10 * (0.6 - memory[4])));     //filter V on exit
 ```
 
-`node[5]` filters inputs from `node[1]`, allowing it to trigger on sequences `BP` and `X`. The `eraser` resets the state on exiting across edge `V`.
+`node[5]` filters inputs from `node[1]`, allowing it to trigger on sequences `BP` and `X`. The `eraser` resets the state on exiting across edge `V`. 
 
 ```js
-//BP, XX, PX but not BX
-eraser[5] = 1 / (1 + exp(-10 * (0.5 - S - V)));                 //reset on S,V
-writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);              //breadcrumbs to node 5
-filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));            //do not increment from node 1
+eraser[5] = 1 / (1 + exp(-10 * (0.5 - S - V)));         //reset on S,V
+writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);      //breadcrumbs to node 5
+filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));    //do not increment from node 1
 ```
 
 ## Readout
@@ -118,3 +117,40 @@ reader[5] = Math.tanh(5 * (memory[4] + memory[5] - 0.7)); //V may yield from 4 o
 reader[6] = Math.tanh(5 * (memory[3]             - 0.7)); //E may yield from 3
 ```
 
+As mentioned earlier, the choice of weightings in the `eraser`, `writer`, and `filter` come into play when we start adding nodes in the reader. If there is a chance that two nodes are both partially activated, we want their sum to be less than the value of a single fully activated node. 
+
+## Discussion
+
+This LSTM has some interesting features/flaws that are worthy of discussion. 
+1. The internal logic assumes that sequences always start with `B`. 
+2. Long loops on `T` from `node[5]` cause false positives on `node[1]`.
+3. The program running on the LSTM is frustratingly obfuscated.
+4. Snapping to vertices may prevent drift in long sequences and help normalize inputs.
+
+### Initialising State
+
+I find it interesting to consider that real-world data will start with the system is some unknown hidden state. The LSTM should be robust enough to recover from uncertainty when there are multiple activated nodes in memory, or when presented with an invalid input-memory pair. 
+
+### Long Loops
+
+When the system loops on `T` from `node[5]`, a false positive is generated in `writer[1]`. This gets filtered by `filter[1]`, but the filter returns a slightly positive value - so with enough loops, `node[1]` will achieeve false activation. 
+
+This is an interesting error because I can see it popping up in real-world applications. Improbable sequences are less likely to be represented in the training data, and so errors on said sequences are less likely to be caught and corrected during training. 
+
+### Obfuscation 
+
+There were multiple times while writing this blog post that I thought, 'neural nets would make a great obfuscation tool'. 
+
+It has me thinking, maybe instead of training for predictions, I should be training a model to output the parameters of a finite state machine. Then at least it might be possible to reverse engineer the program without having to read off the weights.
+
+### Snapping to vertices 
+
+Consider the following:
+- A one-hot vector is equivalent to a vertex on a hypercube. 
+- A loop of state changes is equivalent to walking the vertices of a hyperpolygon in memory space.
+
+Critically, we don't want the memory drifting in weird orbits if we go into a long loop (cycling `PXV` for example). We want to snap to the vertices of the hyperpolygon so that the `reader` correctly classifies the input. With this in mind, I can see why it may make sense to preprocess the inputs into one-hot or binary vectors, to limit the range of outputs on the `eraser`, `writer`, and `filter`. There might even be a case for doubling the memory size and rounding the memory elements after every state change (one slot per breadcrumb). 
+
+## Future Work
+
+For the sake of completeness I should compare this solution to a trained LSTM and compare the differences. TBA.

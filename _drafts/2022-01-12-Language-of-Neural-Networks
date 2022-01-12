@@ -1,0 +1,61 @@
+---
+title: "The Language of Neural Networks"
+layout: post
+---
+
+This post intends to discover neural networks from the inside out, starting at the logistic function and seeing what programs we can build with it by stacking layers. The purpose of this tutorial is to develop an intuition for how neural networks are "multidimensional heightmaps over the input space", and for how reasoning about how complex programs are encoded in the weights. 
+
+## Artificial Neurons
+
+The name 'artificial neuron' doesn't tell us a lot about what it is or what it does. Instead, let's look at some code.
+
+```js
+let activation = 1 / (1 + exp(crossproduct(weights, inputs) + bias));
+
+function crossproduct(a,b) { return a.map((e,i) => e * b[i]).reduce((sum, e) => sum + e, 0); }
+```
+
+There are two important things happening in the activation function. 
+1. The sum of the cross product with the bias is equivalent to testing if a point is above a hyperplane. 
+2. The logistic function converts the test to a boolean (kinda). 
+
+### Hyperplanes
+
+The sum of the cross product with the bias is equivalent to testing if a point is above a line/plane. 
+
+In the code below, the sum of the cross-product and the bias equals `m * x - c`. If this number is positive, then it is by definition above the line `y = m * x - c`. Likewise if the number is negative, then it is below the line `y = m * x - c`.
+
+```js
+let input = x;
+let weight = m;
+let bias = -c;
+let test = 1 / (1 + exp(m * x - c));
+```
+
+In the code below, the sum of the cross-product and the bias equals `a * x + b * y - c`. If this number is positive, then it is by definition above the plane `z = a * x + b * y - c`. Likewise if the number is negative, then it is below the line `z = a * x + b * y - c`.
+
+```js
+let inputs = [x,y];
+let weight = [a,b];
+let bias = -c;
+let test = 1 / (1 + exp(a * x + b * y - c));
+```
+
+Since we can extend this into arbitrary dimensions, it is safe to say that the sum of the cross-product with the bias is an implicit test for if the input vector is above or below a specified plane. 
+
+### Booleans 
+
+We can apply a scale to the weights and bias to make the logistic function steeper or shallower. With a sufficiently high scale, we can begin treating the logistic function like a boolean operator, always returning a one or a zero. 
+
+```js
+let input  = x;
+let weight = scale * m;
+let bias   = scale * -c;
+let test = 1 / (1 + exp(scale * (m * x - c)));
+```
+
+## Layer 0: Inputs
+
+The input layer holds an array of inputs, it's equivalent to the parameters of a method call. Ideally the inputs are normalised between zero and one, it makes life a lot easier if all our inputs are confined to a known region in input space. 
+
+## Layer 1: Simple Booleans

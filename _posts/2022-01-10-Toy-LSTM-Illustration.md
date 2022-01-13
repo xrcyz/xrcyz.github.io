@@ -105,6 +105,15 @@ writer[5] = Math.tanh(0.55 * B + 0.7 * P + 5 * X);      //breadcrumbs to node 5
 filter[5] = 1 / (1 + exp(-30 * (0.65 - memory[1])));    //do not increment from node 1
 ```
 
+Finally, we update the memory
+
+```js
+for(let i = 0; i < memory.length; i++) 
+{ 
+    memory[i] = memory[i] * eraser[i] + writer[i] * filter[i]; 
+}
+```
+
 ## Readout
 
 The `reader` layer is a one-hot vector representing the probability of yielding a specified character. Each element of he `reader` performs a test of the `memory` vector, to determine if the current state could yield a given character.

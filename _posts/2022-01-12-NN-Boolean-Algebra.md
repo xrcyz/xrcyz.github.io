@@ -234,4 +234,10 @@ If we shrink-wrap the hulls too tightly, then we get "over training". Ideally we
 
 ## Demo
 
-Check out the [sketch](https://openprocessing.org/sketch/1365093) on OpenProcessing.
+I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/), using a three-layer neural network to emulate metaball surfaces. 
+
+<p align="center">
+    <a href="https://xrcyz.github.io/neural-metaballs/">
+        <img src= "../assets/images/neural-metaballs.gif" alt="neural metaballs" width="900" height="450" align="middle"/>
+    </a>
+</p>

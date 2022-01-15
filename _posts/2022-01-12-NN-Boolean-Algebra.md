@@ -5,6 +5,16 @@ layout: post
 
 In this post I explore the idea of using boolean algebra in neural networks to construct arbitrary solids in the input space. I found this mental model useful for reasoning about how neural networks perform their functions. 
 
+## Demo
+
+I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/) to go with this post. It uses a three layer network to create a metaball surface. The positioning of the ellipses is controlled entirely by the layer 1 biases, which can be seen changing in the diagram on the right. The weights are fixed. 
+
+<p align="center">
+    <a href="https://xrcyz.github.io/neural-metaballs/">
+        <img src= "../assets/images/neural-metaballs.gif" alt="neural metaballs" width="900" height="450" align="middle"/>
+    </a>
+</p>
+
 ## Artificial Neurons
 
 The name 'artificial neuron' doesn't tell us a lot about what it is or what it does. Instead, let's look at some code.
@@ -232,12 +242,3 @@ Suppose you have a program you want to model as a neural network. If we can find
 
 If we shrink-wrap the hulls too tightly, then we get "over training". Ideally we want the program to be able to interpolate similar answers to similar inputs, so that it doesn't fail on edge cases that weren't in the training data set (the test regime). 
 
-## Demo
-
-I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/), using a three-layer neural network to emulate metaball surfaces. 
-
-<p align="center">
-    <a href="https://xrcyz.github.io/neural-metaballs/">
-        <img src= "../assets/images/neural-metaballs.gif" alt="neural metaballs" width="900" height="450" align="middle"/>
-    </a>
-</p>

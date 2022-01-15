@@ -1,5 +1,5 @@
 ---
-title: "Neural Network Boolean Algebra"
+title: "Neural Networks as Constructive Solid Geometry"
 layout: post
 ---
 
@@ -7,7 +7,7 @@ In this post I explore the idea of using boolean algebra in neural networks to c
 
 ## Demo
 
-I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/) to go with this post. It uses a three layer network to create a metaball surface. The positioning of the ellipses is controlled entirely by the layer 1 biases, which can be seen changing in the diagram on the right. The weights are fixed. 
+I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/) to go with this post. It uses a three layer network to create a metaball surface, and animates the metaballs by changing the biases in layer 1. 
 
 <p align="center">
     <a href="https://xrcyz.github.io/neural-metaballs/">

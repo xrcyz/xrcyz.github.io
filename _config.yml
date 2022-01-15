@@ -3,7 +3,7 @@
 # Site Settings
 title: "xrcyz"
 author: "Blog Author"
-description: "Follow me on <a href="https://twitter.com/planet403">Twitter</a>"
+description: ""
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"

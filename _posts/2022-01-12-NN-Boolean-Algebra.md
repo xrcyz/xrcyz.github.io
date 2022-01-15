@@ -21,7 +21,7 @@ There are two important things happening in the activation function.
 
 The value `crossproduct(weights, inputs) + bias` is equivalent to testing if a point is above a line/plane. 
 
-For one-dimensional inputs, `crossproduct(weights, inputs) + bias` is equal to `m * x + c`. If this value is positive, then it is by definition above the threshold `x = -c / m`. Likewise if the number is negative, then it is below the threshold `x = -c / m`.
+For one-dimensional inputs, `crossproduct(weights, inputs) + bias` is equal to `m * x + c`. If this value is positive, then the input must be above the threshold `x = -c / m`. Likewise if the number is negative, then the input must be below the threshold `x = -c / m`.
 
 ```js
 let input = x;
@@ -30,7 +30,7 @@ let bias = c;
 let test = 1 / (1 + exp(m * x + c));
 ```
 
-For two-dimensional inputs, `crossproduct(weights, inputs) + bias` is equal to `a * x + b * y + c`. If this number is positive, then it is by definition above the line `y = (-a * x - c) / b`. Likewise if the number is negative, then it is below the line `y = (-a * x - c) / b`.
+For two-dimensional inputs, `crossproduct(weights, inputs) + bias` is equal to `a * x + b * y + c`. If this number is positive, then the input must be above the line `y = (-a * x - c) / b`. Likewise if the number is negative, then the input must be below the line `y = (-a * x - c) / b`.
 
 ```js
 let inputs = [x,y];
@@ -112,8 +112,8 @@ To expand on this, we need to distinguish between the __input space__ and the __
 - __L1 space__ is a a unit square containing `[L1.a,L1.b]`.
 
 We know that each neuron in `L1` performs a single linear separation in the __input space__. 
-- `L1[0]` slices the unit cube halfway along the x-axis, colouring the solids red/blue for above/below the plane;
-- `L1[1]` slices the unit cube halfway long the y-axis, colouring the solids red/blue for above/below the plane;
+- `L1.a` slices the unit cube halfway along the x-axis, colouring the solids red/blue for above/below the plane;
+- `L1.b` slices the unit cube halfway long the y-axis, colouring the solids red/blue for above/below the plane;
 
 | Layer 1 Output  | Solid Intersections |
 |---              |---                  |
@@ -165,7 +165,7 @@ let L3 =
 }
 ```
 
-The same principles apply here. The neuron `L3.a` is linearly separating __layer 2 space__ to test if the input point is inside the big square and outside the little suqare. 
+The same principles apply here. The neuron `L3.a` is linearly separating __layer 2 space__ to test if the input point is inside the big square and outside the little square. 
 
 ## Layer 4: Arbitrary Regions in Input Space
 
@@ -228,9 +228,9 @@ In this example, the neuron `L4.a` is linearly separating __layer 3 space__ to t
 
 Armed with this mental model, we can begin to reason about how neural networks perform their functions. 
 
-Suppose you have a program you want to model as a neural network. If we can find a schema to represent the input parameters as numbers between one and zero, then we can represent every possible input to the program as a point cloud in a unit hypercube. Similarly, if we can represent all components of the return value of the function as numbers between one and zero, then each one of those could be a neuron in the output layer of a network. Now we can use boolean algebra to construct arbitrary hypersolids in the input space, drawing hulls around sets of inputs that return the same answer, thus encoding the logic of our program in the weights of the network. 
+Suppose you have a program you want to model as a neural network. If we can find a schema to represent the input parameters as numbers between one and zero, then we can represent the set of all program test cases as a point cloud in a unit hypercube. Similarly, if we can represent all components of the return value of the function as numbers between one and zero, then each one of those could be a neuron in the output layer of a network. Now we can use boolean algebra to construct arbitrary hypersolids in the input space, drawing hulls around sets of inputs that return the same answer, thus encoding the logic of our program in the weights of the network. 
 
-If we shrink-wrap the hulls too tightly, then we get "over training". Ideally we want the program to be able to interpolate between similar input points, so that it doesn't fail on stimuli that weren't in the training data set (the test regime). 
+If we shrink-wrap the hulls too tightly, then we get "over training". Ideally we want the program to be able to interpolate similar answers to similar inputs, so that it doesn't fail on edge cases that weren't in the training data set (the test regime). 
 
 ## Demo
 

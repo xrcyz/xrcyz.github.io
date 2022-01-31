@@ -1,5 +1,5 @@
 ---
-title: "Neural Networks as Constructive Solid Geometry"
+title: "Neural Network Boolean Algera"
 layout: post
 ---
 

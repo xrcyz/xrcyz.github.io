@@ -7,7 +7,7 @@ In this post I explore the idea of using boolean algebra in neural networks to c
 
 ## Demo
 
-I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/) to go with this post. It uses a three layer network to create a metaball surface, and animates the metaballs by changing the biases in layer 1. 
+I sketched up a quick [proof of concept](https://xrcyz.github.io/neural-metaballs/) to go with this post. It uses a three layer network to create a metaball heightmap, and animates the metaballs by changing the biases in layer 1. 
 
 <p align="center">
     <a href="https://xrcyz.github.io/neural-metaballs/">
@@ -29,7 +29,7 @@ There are two important things happening in the activation function.
 
 ### Hyperplanes
 
-The value `crossproduct(weights, inputs) + bias` is equivalent to testing if a point is above a line/plane. 
+The value of `crossproduct(weights, inputs) + bias` is equivalent to testing if a point is above a line/plane. 
 
 For one-dimensional inputs, `crossproduct(weights, inputs) + bias` is equal to `m * x + c`. If this value is positive, then the input must be above the threshold `x = -c / m`. Likewise if the number is negative, then the input must be below the threshold `x = -c / m`.
 

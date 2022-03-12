@@ -116,7 +116,7 @@ for(let i = 0; i < memory.length; i++)
 
 ## Readout
 
-The `reader` layer is a one-hot vector representing the probability of yielding a specified character. Each element of he `reader` performs a test of the `memory` vector, to determine if the current state could yield a given character.
+The `reader` layer outputs a one-hot vector representing the probability of yielding a specified character. Each element of the `reader` performs a test of the `memory` vector, to determine if the current state could yield a given character.
 
 ```js
 reader[0] = 0; //we never yield B
@@ -144,7 +144,7 @@ I find it interesting to consider that real-world data will start with the syste
 
 ### Long Loops
 
-When the system loops on `T` from `node[5]`, a false positive is generated in `writer[1]`. This gets filtered by `filter[1]`, but the filter returns a slightly positive value - so with enough loops, `node[1]` will achieeve false activation. 
+When the system loops on `T` from `node[5]`, a false positive is generated in `writer[1]`. This gets filtered by `filter[1]`, but the filter returns a slightly positive value - so with enough loops, `node[1]` will achieve false activation. 
 
 This is an interesting error because I can see it popping up in real-world applications. Improbable sequences are less likely to be represented in the training data, and so errors on said sequences are less likely to be caught and corrected during training. 
 

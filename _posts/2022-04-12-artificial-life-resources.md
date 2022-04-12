@@ -43,5 +43,5 @@ An extension of traditional cellular automata that uses [multiple neighborhoods]
 
 - [Evolution strategies](https://blog.otoro.net/2017/10/29/visual-evolution-strategies/)
 - [MAP-Elites algorithm](https://arxiv.org/abs/1504.04909)
-- [Complexity Exploresables](https://www.complexity-explorables.org/explorables/)
+- [Complexity Explorables](https://www.complexity-explorables.org/explorables/)
 - [Morphogenic Resources](https://github.com/jasonwebb/morphogenesis-resources)

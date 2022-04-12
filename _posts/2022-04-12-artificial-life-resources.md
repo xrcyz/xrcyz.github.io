@@ -3,7 +3,7 @@ title: "Artifical Life Resources"
 layout: post
 ---
 
-Some artificial life references. 
+Some artificial life references that I hold in high regard. 
 
 ## Antibiotic gradient resistance
 
@@ -13,7 +13,7 @@ A demonstration of evolution doing gradient descent to antibiotic resistance.
 
 ## Evolution of Evolvability
 
-What happens when organisms can evolve their own metaparameters? Gives context to the idea that viruses can control the mutation rate of their own genomes to escape immune system response.
+What happens when organisms can evolve their own hyperparameters? Gives context to the idea that viruses can control the mutation rate of their own genomes to escape immune system response.
 
 {% include embed.html url="https://www.youtube.com/embed/i-qe-2PLkIc" %}
 
@@ -26,10 +26,6 @@ Work by Joel Simons on [coral morphogenesis](https://www.joelsimon.net/corals.ht
 Work by Alexander Mordvintsev on [neural cellular automata](https://znah.net/hexells/) that are trained to reproduce a target image. Goes with the essay [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/)
 
 {% include embed.html url="https://www.youtube.com/embed/unF2CVkMIiE" %}
-
-## Open Exploration 
-
-This [paper](https://advances.sciencemag.org/content/6/5/eaay4237) describes a Curiosity Algorithm that can efficiently explore the states a complex chemical system can exhibit.
 
 ## Lenia 
 

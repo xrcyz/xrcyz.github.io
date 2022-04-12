@@ -3,7 +3,7 @@ title: "Artifical Life Resources"
 layout: post
 ---
 
-Some artificial life references that I hold in high regard. 
+Some youtube videos and papers that live rent-free in my head...
 
 ## Antibiotic gradient resistance
 

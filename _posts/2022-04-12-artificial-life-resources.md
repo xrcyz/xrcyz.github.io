@@ -15,7 +15,7 @@ A demonstration of evolution doing gradient descent to antibiotic resistance.
 
 What happens when organisms can evolve their own metaparameters? Gives context to the idea that viruses can control the mutation rate of their own genomes to escape immune system response.
 
-{% include embed.html url="https://www.youtube.com/embed/r2GHOagR2gU" %}
+{% include embed.html url="https://www.youtube.com/embed/i-qe-2PLkIc" %}
 
 ## Evolving Alien Corals
 
@@ -30,8 +30,6 @@ Work by Alexander Mordvintsev on [neural cellular automata](https://znah.net/hex
 ## Open Exploration 
 
 This [paper](https://advances.sciencemag.org/content/6/5/eaay4237) describes a Curiosity Algorithm that can efficiently explore the states a complex chemical system can exhibit.
-
-{% include embed.html url="https://www.youtube.com/embed/bY5OoRBJkf0" %}
 
 ## Lenia 
 

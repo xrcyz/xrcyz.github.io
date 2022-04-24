@@ -5,7 +5,7 @@ layout: post
 
 One year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
 
-Since then I've made a [short post](../_posts/2022-01-12-NN-Boolean-Algebra.md) about my operating model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
+Since then I've made a [post](../_posts/2022-01-12-NN-Boolean-Algebra.md) about my current mental model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
 
 ## Conway's Game of Life
 
@@ -41,9 +41,9 @@ Naturally I was curious to see what happens with different weights and biases, s
 
 ![neural game of life screenshots](/assets/images/neural-games-of-life.png))
 
-At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`. I could visualise each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
+At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
 
-I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches), [Sayama](https://openprocessing.org/user/159668?view=sketches), [MathFoxLab](https://openprocessing.org/user/161812?view=sketches) and others on OpenProcessing, and eventually hacked together... this. 
+I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches), [Sayama](https://openprocessing.org/user/159668?view=sketches), [MathFoxLab](https://openprocessing.org/user/161812?view=sketches) and others on OpenProcessing, and eventually hacked together a visualisation. 
 
 <p align="center">
     <a href="https://openprocessing.org/sketch/1254639">
@@ -54,7 +54,7 @@ I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user
     </a>
 </p>
 
-The code in this sketch is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that all the weights and biases are doing is pushing around slopes on a heighttmap. 
+The code in this sketch is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that the weights and biases just push around slopes on a heightmap. 
 
 <p align="center">
     <figure>
@@ -63,11 +63,20 @@ The code in this sketch is hot garbage, but its still kinda cool. You can select
     </figure>
 </p>
 
+## Multiple Neighborhood Cellular Automata 
+
+My next idea was to structure a neural network theoretically capable of reproducing some of [Slackermanz MNCA](https://www.youtube.com/watch?v=5TstDc_ed-4), and do a random search through weight space to see what pops out. Unfortunately I did not get C. elegans on the first go, but I did manage to get some motile cells and cell division. 
 
 
 
 
-References:
+## Raymarching 3D textures
+
+
+
+## References
+Links to various people or channels whose work helped me in this project. 
+
 - [Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
 - [Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks](https://arxiv.org/abs/1909.09586)
 - [Sayama](https://openprocessing.org/user/159668?view=sketches)
@@ -75,3 +84,7 @@ References:
 - [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches)
 - [Slackermanz](https://slackermanz.com/understanding-multiple-neighborhood-cellular-automata/)
 - [Alex Mordvintsev](https://twitter.com/ak92501/status/1465152668817670150)
+- [Flyguy](https://www.shadertoy.com/view/Ml3SD4)
+- [Softology blog](https://softologyblog.wordpress.com/2019/12/28/3d-cellular-automata-3/)
+- [David Eck](https://math.hws.edu/graphicsbook/index.html)
+- [Lenia](https://arxiv.org/abs/1812.05433)

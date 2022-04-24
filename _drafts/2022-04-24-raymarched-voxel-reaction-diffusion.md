@@ -1,0 +1,77 @@
+---
+title: "Neural Cellular Automata Writeup"
+layout: post
+---
+
+One year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
+
+Since then I've made a [short post](../_posts/2022-01-12-NN-Boolean-Algebra.md) about my operating model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
+
+## Conway's Game of Life
+
+I picked the update rule for Conway's Game of Life because it was the simplest interesting program I could think of. If a cell is active and has 2 or 3 neighbors, it stays active. If an inactive cell has exactly 3 neighbors, then it activates. All other cells become inactive. From these simple rules we get the vast panoply of patterns so far discovered. 
+
+```js
+if(self == 1 && neighbors == (2|3)) return 1;
+if(self == 0 && neighbors == 3) return 1;
+else return 0;
+```
+
+We can represent this as a neural network [like so](https://openprocessing.org/sketch/1236584):
+
+```js
+//input layer
+let self, count; 
+
+//layer 1
+let selfIsOne = 1 /  (1 + exp(-10 * ( self - 0.5))); 
+let peersOver1 = 1 / (1 + exp(-10 * ( count - 1.5 ))); 
+let peersOver2 = 1 / (1 + exp(-10 * ( count - 2.5 ))); 
+let peersOver3 = 1 / (1 + exp(-10 * ( count - 3.5 ))); 
+
+//layer 2
+let self0peers3 =    1 / (1 + exp(-10 * (-selfIsOne + peersOver2 - peersOver3 - 0.5)));
+let self1peers2or3 = 1 / (1 + exp(-10 * ( selfIsOne + peersOver1 - peersOver3 - 1.5)));
+
+//output layer
+let activation = 1 / (1 + exp(-10 * ( self0peers3 + self1peers2or3 - 0.5 ))); 
+```
+
+Naturally I was curious to see what happens with different weights and biases, so I parameterised them and spent way to much time hitting refresh to explore the state space. 
+
+![neural game of life screenshots](/assets/images/neural-games-of-life.png))
+
+At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`. I could visualise each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
+
+I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches), [Sayama](https://openprocessing.org/user/159668?view=sketches), [MathFoxLab](https://openprocessing.org/user/161812?view=sketches) and others on OpenProcessing, and eventually hacked together... this. 
+
+<p align="center">
+    <a href="https://openprocessing.org/sketch/1254639">
+        <figure>
+            <img src= "../assets/images/NGOL-function-heatmap.png" alt="heatmap of cell states visited by neural network" width="800" height="365" align="middle"/>
+            <figcaption>Plot of the neural network controlling a cellular automata.</figcaption>
+        </figure>
+    </a>
+</p>
+
+The code in this sketch is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that all the weights and biases are doing is pushing around slopes on a heighttmap. 
+
+<p align="center">
+    <figure>
+        <img src= "../assets/images/NGOL-function-heatmap.png" alt="neural networks plotted as 3D functions" width="800" height="365" align="middle"/>
+        <figcaption>Six different neural network functions that approximate Conway's Game of Life.</figcaption>
+    </figure>
+</p>
+
+
+
+
+
+References:
+- [Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
+- [Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks](https://arxiv.org/abs/1909.09586)
+- [Sayama](https://openprocessing.org/user/159668?view=sketches)
+- [MathFoxLab](https://openprocessing.org/user/161812?view=sketches)
+- [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches)
+- [Slackermanz](https://slackermanz.com/understanding-multiple-neighborhood-cellular-automata/)
+- [Alex Mordvintsev](https://twitter.com/ak92501/status/1465152668817670150)

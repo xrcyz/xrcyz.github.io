@@ -58,19 +58,47 @@ The code in this sketch is hot garbage, but its still kinda cool. You can select
 
 <p align="center">
     <figure>
-        <img src= "../assets/images/NGOL-function-heatmap.png" alt="neural networks plotted as 3D functions" width="800" height="365" align="middle"/>
+        <img src= "../assets/images/NGOL-function-heatmap.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
         <figcaption>Six different neural network functions that approximate Conway's Game of Life.</figcaption>
     </figure>
 </p>
 
 ## Multiple Neighborhood Cellular Automata 
 
-My next idea was to structure a neural network theoretically capable of reproducing some of [Slackermanz MNCA](https://www.youtube.com/watch?v=5TstDc_ed-4), and do a random search through weight space to see what pops out. Unfortunately I did not get C. elegans on the first go, but I did manage to get some motile cells and cell division. 
+Drunk with power, I decided to add a third input to the neural network and try to imitate some of the [outstanding results](https://www.youtube.com/watch?v=5TstDc_ed-4) created by Slackermanz. Unfortunately I did not get C. elegans on the first go, but I did manage to get some motile cells and cell division, which was exciting. 
 
+<p align="center">
+    <a href="https://openprocessing.org/sketch/1360946">
+        <figure>
+            <img src= "../assets/images/MNCA-cells.png" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
+            <figcaption>Cellular automata with an inner and outer neighborhood.</figcaption>
+        </figure>
+    </a>
+</p>
 
-
+A possible direction of future work would be to transcribe Slackermanz rulesets into neural functions and see if there is any commonality to the heightmaps, then you might be able to predict interesting rulespaces as a result.  
 
 ## Raymarching 3D textures
+
+In Feb 2020 the article [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) dropped on Distill, with its mind-blowing demonstration of cellular automata to regenerate images from a single pixel. Then in June 2021 the paper [Differentiable Programming of Reaction-Diffusion Patterns](https://selforglive.github.io/alife_rd_textures/) showed examples of 'volumetric texture synthesis', where 2D update rules can be applied to spaces of higher dimensionality. 
+
+Up until this point I had been copying and pasting snippets of shader code without really understanding why they work. I took a detour through [Introduction to Computer Graphics](https://math.hws.edu/graphicsbook/index.html) to learn the minimum OpenGL. Then I used the [Volumetric Sandbox](https://www.shadertoy.com/view/Ml3SD4) by Flyguy as a template for raymarching 3D textures. I also referenced a lot of code from [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches) and [Dave Pagurek](https://openprocessing.org/user/67809?view=sketches) on OpenProcessing.
+
+I'm still a novice shader programmer, but I'm happy with how it's looking. 
+
+<p align="center">
+    <figure>
+        <img src= "../assets/images/voxel reaction diffusion raymarching.png" alt="image of 3D reaction diffusion" width="800" height="600" align="middle"/>
+        <figcaption>Raymarching 3D reaction diffusion on a 64x voxel grid.</figcaption>
+    </figure>
+</p>
+
+sdskj
+
+<video width="800" height="600" controls="controls">
+  <source src="../assets/images/micromachines.mp4" type="video/mp4">
+</video>
+
 
 
 
@@ -78,7 +106,6 @@ My next idea was to structure a neural network theoretically capable of reproduc
 Links to various people or channels whose work helped me in this project. 
 
 - [Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
-- [Understanding LSTM -- a tutorial into Long Short-Term Memory Recurrent Neural Networks](https://arxiv.org/abs/1909.09586)
 - [Sayama](https://openprocessing.org/user/159668?view=sketches)
 - [MathFoxLab](https://openprocessing.org/user/161812?view=sketches)
 - [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches)

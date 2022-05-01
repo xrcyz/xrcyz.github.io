@@ -47,20 +47,14 @@ I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user
 
 <p align="center">
     <a href="https://openprocessing.org/sketch/1254639">
-        <figure>
-            <img src= "../assets/images/NGOL-function-heatmap.png" alt="heatmap of cell states visited by neural network" width="800" height="365" align="middle"/>
-            <figcaption>Plot of the neural network controlling a cellular automata.</figcaption>
-        </figure>
+        <img src= "../assets/images/NGOL-function-heatmap.png" alt="heatmap of cell states visited by neural network" width="800" height="365" align="middle"/>
     </a>
 </p>
 
 The code in this sketch is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that the weights and biases just push around slopes on a heightmap. 
 
 <p align="center">
-    <figure>
-        <img src= "../assets/images/NGOL-function-plots.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
-        <figcaption>Six different neural network functions that approximate Conway's Game of Life.</figcaption>
-    </figure>
+    <img src= "../assets/images/NGOL-function-plots.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
 </p>
 
 ## Multiple Neighborhood Cellular Automata 
@@ -69,10 +63,7 @@ Drunk with power, I decided to add a third input to the neural network and try t
 
 <p align="center">
     <a href="https://openprocessing.org/sketch/1360946">
-        <figure>
-            <img src= "../assets/images/MNCA-cells.gif" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
-            <figcaption>Cellular automata with an inner and outer neighborhood.</figcaption>
-        </figure>
+        <img src= "../assets/images/MNCA-cells.gif" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
     </a>
 </p>
 

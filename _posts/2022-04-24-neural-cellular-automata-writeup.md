@@ -8,7 +8,7 @@ category:   coding
 tags:       [creative coding, javascript, neural networks, cellular automata, reaction diffusion, voxels, raymarching]
 ---
 
-One year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
+About a year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
 
 Since then I've made a [post](../_posts/NN-Boolean-Algebra) about my current mental model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
 
@@ -88,11 +88,11 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
     <img src= "../assets/images/voxel reaction diffusion raymarching.png" alt="image of 3D reaction diffusion" width="800" height="600" align="middle"/>
 </p>
 
-Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new voxel state. 
+Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an inhibitor signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new voxel state. 
 
 {% include embed.html url="https://www.youtube.com/embed/8_6DYldEQ28" %}
 
-What is interesting to me at present is that you could run reaction diffusion in a 3D texture in order to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
+What is interesting to me at present is that you could run reaction diffusion in a 3D texture in order to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? Like, if you save the frames of an animation into a 3D texture, then you could use that as a target texture to train a neural cellular automata for video generation. And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
 
 If you read this far and you want to keep in contact, please give me a follow on [Twitter](https://twitter.com/planet403).
 

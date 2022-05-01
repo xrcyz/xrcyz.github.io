@@ -90,9 +90,9 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
 
 Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new voxel state. 
 
-{% include embed.html url="https://www.youtube.com/embed/_C0A5zX-iqM" %}
+{% include embed.html url="https://www.youtube.com/embed/_8_6DYldEQ28" %}
 
-What is interesting to me at present is that you could run reaction diffusion in a 3D texture to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
+What is interesting to me at present is that you could run reaction diffusion in a 3D texture in order to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
 
 If you read this far and you want to keep in contact, please give me a follow on [Twitter](https://twitter.com/planet403).
 

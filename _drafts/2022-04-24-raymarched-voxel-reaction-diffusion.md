@@ -1,6 +1,11 @@
 ---
-title: "Neural Cellular Automata Writeup"
-layout: post
+title:      "Neural Cellular Automata Writeup"
+layout:     post
+date:       2022-04-24 13:00
+author:     "xrcyz"
+header-img: "../assets/images/voxel reaction diffusion raymarching.png"
+category:   coding
+tags:       [creative coding, javascript, neural networks, cellular automata, reaction diffusion, voxels, raymarching]
 ---
 
 One year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
@@ -83,10 +88,9 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
 
 Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new state. 
 
-<p align="center">
-    <img src= "../assets/images/micromachines.mp4" alt="MNCA cellular automata" align="middle"/>
-</p>
-
+<video width="800" height="600" controls>
+  <source type="video/mp4" src="../assets/images/micromachines.mp4">
+</video>
 
 ## References
 Links to various people or channels whose work helped me in this project. 

@@ -44,7 +44,9 @@ let activation = 1 / (1 + exp(-10 * ( self0peers3 + self1peers2or3 - 0.5 )));
 
 Naturally I was curious to see what happens with different weights and biases, so I parameterised them and spent way to much time hitting refresh to explore the state space. 
 
-![neural game of life screenshots](/assets/images/neural-games-of-life.png))
+<p align="center">
+    <img src= "../assets/images/neural-games-of-life.png" alt="neural game of life screenshots" width="800" height="800" align="middle"/>
+</p>
 
 At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
 
@@ -88,9 +90,7 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
 
 Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new state. 
 
-<video width="800" height="600" controls>
-  <source type="video/mp4" src="../assets/images/micromachines.mp4">
-</video>
+{% include embed.html url="https://www.youtube.com/embed/_C0A5zX-iqM" %}
 
 ## References
 Links to various people or channels whose work helped me in this project. 
@@ -104,4 +104,4 @@ Links to various people or channels whose work helped me in this project.
 - [Flyguy](https://www.shadertoy.com/view/Ml3SD4)
 - [Softology blog](https://softologyblog.wordpress.com/2019/12/28/3d-cellular-automata-3/)
 - [David Eck](https://math.hws.edu/graphicsbook/index.html)
-- [Lenia](https://arxiv.org/abs/1812.05433)
+- [Bert Chan](https://arxiv.org/abs/1812.05433)

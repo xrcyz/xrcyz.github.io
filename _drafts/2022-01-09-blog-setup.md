@@ -76,8 +76,8 @@ And now that I'm looking for it, the `layout` types in the header blocks get map
 
 A bit of googling takes me to [this](https://www.taniarascia.com/make-a-static-website-with-jekyll/) awesome tutorial by Tania Rascia, which fills in most of the gaps.
 
-
 More links:
+- [set link preview image?](https://agustinus.kristia.de/techblog/2016/08/15/jekyll-fb-share/)
 - https://carpentries-incubator.github.io/jekyll-pages-novice/arrays/index.html
 - https://www.jasongaylord.com/blog/creating-a-jekyll-theme-from-windows
 - https://www.jasongaylord.com/blog/2020/06/18/site-tags-and-sorting-in-jekyll

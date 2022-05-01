@@ -68,7 +68,7 @@ Drunk with power, I decided to add a third input to the neural network and try t
 
 <p align="center">
     <a href="https://openprocessing.org/sketch/1360946">
-        <img src= "../assets/images/MNCA-cells.gif" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
+        <img src= "../assets/images/MNCA-cells.gif" alt="MNCA cellular automata" width="500" height="500" align="middle"/>
     </a>
 </p>
 
@@ -83,7 +83,7 @@ Up until this point I had been copying and pasting snippets of shader code witho
 I'm still a novice shader programmer, but I'm happy with how it's looking. 
 
 <p align="center">
-    <img src= "../assets/images/voxel reaction diffusion raymarching.png" alt="image of 3D reaction diffusion" width="400" height="400" align="middle"/>
+    <img src= "../assets/images/voxel reaction diffusion raymarching.png" alt="image of 3D reaction diffusion" width="800" height="600" align="middle"/>
 </p>
 
 Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new state. 

@@ -48,7 +48,7 @@ Naturally I was curious to see what happens with different weights and biases, s
     <img src= "../assets/images/neural-games-of-life.png" alt="neural game of life screenshots" width="800" height="800" align="middle"/>
 </p>
 
-At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
+At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`, where `x` is the current cell state and `y` is the neighborhood sum. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
 
 I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches), [Sayama](https://openprocessing.org/user/159668?view=sketches), [MathFoxLab](https://openprocessing.org/user/161812?view=sketches) and others on OpenProcessing, and eventually hacked together a visualisation. 
 
@@ -58,7 +58,7 @@ I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user
     </a>
 </p>
 
-The code in this sketch is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that the weights and biases just push around slopes on a heightmap. 
+The code in this [sketch](https://openprocessing.org/sketch/1254639) is hot garbage, but its still kinda cool. You can select from a dozen or so cellular automatas and see the 3D plot of the neural network update rule, as well as a heatmap of states visited by a cell over time. The big takeaway that I got from this is that the weights and biases just push around slopes on a heightmap. 
 
 <p align="center">
     <img src= "../assets/images/NGOL-function-plots.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
@@ -66,7 +66,7 @@ The code in this sketch is hot garbage, but its still kinda cool. You can select
 
 ## Multiple Neighborhood Cellular Automata 
 
-Drunk with power, I decided to add a third input to the neural network and try to imitate some of the [outstanding results](https://www.youtube.com/watch?v=5TstDc_ed-4) created by Slackermanz. Unfortunately I did not get C. elegans on the first go, but I did manage to get some motile cells and cell division, which was exciting. 
+Drunk with power, I decided to add a third input to the neural network and try to imitate some of the [outstanding results](https://www.youtube.com/watch?v=5TstDc_ed-4) created by [Slackermanz](https://slackermanz.com/understanding-multiple-neighborhood-cellular-automata/). Unfortunately I did not get C. elegans on the first go, but I did manage to get some motile cells and cell division, which was exciting. 
 
 <p align="center">
     <a href="https://openprocessing.org/sketch/1360946">
@@ -78,7 +78,7 @@ A possible direction of future work would be to transcribe Slackermanz rulesets 
 
 ## Raymarching 3D textures
 
-In Feb 2020 the article [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) dropped on Distill, with its mind-blowing demonstration of cellular automata to regenerate images from a single pixel. Then in June 2021 the paper [Differentiable Programming of Reaction-Diffusion Patterns](https://selforglive.github.io/alife_rd_textures/) showed examples of 'volumetric texture synthesis', where 2D update rules can be applied to spaces of higher dimensionality. 
+In Feb 2020 the article [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) dropped on Distill, with its mind-blowing demonstration of cellular automata to regenerate images from a single pixel. Then in June 2021 the paper [Differentiable Programming of Reaction-Diffusion Patterns](https://selforglive.github.io/alife_rd_textures/) showed examples of 'volumetric texture synthesis', where 2D update rules can be applied to spaces of higher dimensionality. I decided to try it.
 
 Up until this point I had been copying and pasting snippets of shader code without really understanding why they work. I took a detour through [Introduction to Computer Graphics](https://math.hws.edu/graphicsbook/index.html) to learn the minimum OpenGL. Then I used the [Volumetric Sandbox](https://www.shadertoy.com/view/Ml3SD4) by Flyguy as a template for raymarching 3D textures. I also referenced a lot of code from [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches) and [Dave Pagurek](https://openprocessing.org/user/67809?view=sketches) on OpenProcessing.
 
@@ -88,9 +88,13 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
     <img src= "../assets/images/voxel reaction diffusion raymarching.png" alt="image of 3D reaction diffusion" width="800" height="600" align="middle"/>
 </p>
 
-Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new state. 
+Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new voxel state. 
 
 {% include embed.html url="https://www.youtube.com/embed/_C0A5zX-iqM" %}
+
+What is interesting to me at present is that you could run reaction diffusion in a 3D texture to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
+
+If you read this far and you want to keep in contact, please give me a follow on [Twitter](https://twitter.com/planet403).
 
 ## References
 Links to various people or channels whose work helped me in this project. 

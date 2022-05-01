@@ -96,7 +96,7 @@ What is interesting to me at present is that you could run reaction diffusion in
 
 If you read this far and you want to keep in contact, please give me a follow on [Twitter](https://twitter.com/planet403).
 
-## References
+## Heroes
 Links to various people or channels whose work helped me in this project. 
 
 - [Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)

@@ -58,7 +58,7 @@ The code in this sketch is hot garbage, but its still kinda cool. You can select
 
 <p align="center">
     <figure>
-        <img src= "../assets/images/NGOL-function-heatmap.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
+        <img src= "../assets/images/NGOL-function-plots.png" alt="neural networks plotted as 3D functions" width="800" height="500" align="middle"/>
         <figcaption>Six different neural network functions that approximate Conway's Game of Life.</figcaption>
     </figure>
 </p>
@@ -70,13 +70,13 @@ Drunk with power, I decided to add a third input to the neural network and try t
 <p align="center">
     <a href="https://openprocessing.org/sketch/1360946">
         <figure>
-            <img src= "../assets/images/MNCA-cells.png" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
+            <img src= "../assets/images/MNCA-cells.gif" alt="MNCA cellular automata" width="800" height="800" align="middle"/>
             <figcaption>Cellular automata with an inner and outer neighborhood.</figcaption>
         </figure>
     </a>
 </p>
 
-A possible direction of future work would be to transcribe Slackermanz rulesets into neural functions and see if there is any commonality to the heightmaps, then you might be able to predict interesting rulespaces as a result.  
+A possible direction of future work would be to transcribe Slackermanz rulesets into neural functions and see if there is any commonality to the function shapes, then you might be able to predict interesting rulespaces as a result.  
 
 ## Raymarching 3D textures
 
@@ -93,7 +93,7 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
     </figure>
 </p>
 
-sdskj
+Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new state. 
 
 <video width="800" height="600" controls="controls">
   <source src="../assets/images/micromachines.mp4" type="video/mp4">

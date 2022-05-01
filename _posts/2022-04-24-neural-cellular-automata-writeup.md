@@ -10,7 +10,7 @@ tags:       [creative coding, javascript, neural networks, cellular automata, re
 
 One year ago I decided that I would hand-weight a neural network in order to understand how it works. I felt like I could read all the matrix math and draw all the network diagrams and still have no idea why answers come out when inputs go in. I needed to strip and rebuild a neural network bolt by bolt, weight by weight, to see inside the forbidden blackbox. 
 
-Since then I've made a [post](../_posts/NN-Boolean-Algebra.md) about my current mental model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
+Since then I've made a [post](../_posts/NN-Boolean-Algebra) about my current mental model. I'm not going to cover that ground again. Instead I want to summarise my journey from Conway's Game of Life to 3D rendering a neural reaction diffusion model. 
 
 ## Conway's Game of Life
 

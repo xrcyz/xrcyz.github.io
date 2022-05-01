@@ -14,7 +14,7 @@ Since then I've made a [post](../_posts/NN-Boolean-Algebra) about my current men
 
 ## Conway's Game of Life
 
-I picked the update rule for Conway's Game of Life because it was the simplest interesting program I could think of. If a cell is active and has 2 or 3 neighbors, it stays active. If an inactive cell has exactly 3 neighbors, then it activates. All other cells become inactive. From these simple rules we get the vast panoply of patterns so far discovered. 
+I picked the update rule for Conway's Game of Life because it was the simplest interesting program I could think of. If a cell is active and has 2 or 3 neighbors, it stays active. If an inactive cell has exactly 3 neighbors, then it activates. All other cells become inactive. From these simple rules we get the vast catalogue of patterns so far discovered. 
 
 ```js
 if(self == 1 && neighbors == (2|3)) return 1;
@@ -90,7 +90,7 @@ I'm still a novice shader programmer, but I'm happy with how it's looking.
 
 Which brings us to the current state of play: I expanded the cell neighborhoods to implement Young's model of reaction diffusion. Each voxel receives an activation signal from an inner envelope and an activation signal from an outer envelope. The neural network takes the current voxel state, the activation signal and the inhibitor signal, and computes a new voxel state. 
 
-{% include embed.html url="https://www.youtube.com/embed/_8_6DYldEQ28" %}
+{% include embed.html url="https://www.youtube.com/embed/8_6DYldEQ28" %}
 
 What is interesting to me at present is that you could run reaction diffusion in a 3D texture in order to output a 2D video of cell mitosis. Time is just another dimension. Theoretically you could generate arbitrary rulesets for 2D cellular automata by training against a target 3D texture, right? And then do the same thing with a voxel scene by targeting a 4D texture. It's turtles all the way up...
 

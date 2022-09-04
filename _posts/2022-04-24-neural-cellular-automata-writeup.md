@@ -48,7 +48,7 @@ Naturally I was curious to see what happens with different weights and biases, s
     <img src= "../assets/images/neural-games-of-life.png" alt="neural game of life screenshots" width="800" height="800" align="middle"/>
 </p>
 
-At this point it occurred to me that the neural network can be plotted as a function `z = f(x,y)`, where `x` is the current cell state and `y` is the neighborhood sum. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
+While exploring it occurred to me that the neural network can be plotted as a function `z = f(x,y)`, where `x` is the current cell state and `y` is the neighborhood sum. I could plot each rule set and, more importantly, reason about them as functional programs that map inputs to outputs. It feels much more natural to me to read a neural network as a tree of nested functions (output to input) than as a pipeline of operations (input to output). 
 
 I started reading some shaders by [Paul Wheeler](https://openprocessing.org/user/254459?view=sketches), [Sayama](https://openprocessing.org/user/159668?view=sketches), [MathFoxLab](https://openprocessing.org/user/161812?view=sketches) and others on OpenProcessing, and eventually hacked together a visualisation. 
 
@@ -74,8 +74,6 @@ Drunk with power, I decided to add a third input to the neural network and try t
     </a>
 </p>
 
-A possible direction of future work would be to transcribe Slackermanz rulesets into neural functions and see if there is any commonality to the function shapes, then you might be able to predict interesting rulespaces as a result. 
-
 ## Raymarching 3D textures
 
 In Feb 2020 the article [Growing Neural Cellular Automata](https://distill.pub/2020/growing-ca/) dropped on Distill, with its mind-blowing demonstration of cellular automata to regenerate images from a single pixel. Then in June 2021 the paper [Differentiable Programming of Reaction-Diffusion Patterns](https://selforglive.github.io/alife_rd_textures/) showed examples of 'volumetric texture synthesis', where 2D update rules can be applied to spaces of higher dimensionality. I decided to try it.
@@ -97,7 +95,7 @@ What is interesting to me at present is that you could run reaction diffusion in
 If you read this far and you want to keep in contact, please give me a follow on [Twitter](https://twitter.com/planet403).
 
 ## Heroes
-Links to various people or channels whose work helped me in this project. 
+Links to various people or channels who share awesome work. 
 
 - [Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
 - [Sayama](https://openprocessing.org/user/159668?view=sketches)
